@@ -20,7 +20,7 @@ spec:
       containers:
         - name: demo-2048
           image: >-
-            harbor.od.com/demo/demo-2048:{{build_tag}}
+            10.24.2.14/demo/demo-2048:{{build_tag}}
           ports:
             - containerPort: 8080
               protocol: TCP
