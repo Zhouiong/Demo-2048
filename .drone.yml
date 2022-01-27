@@ -44,9 +44,9 @@ steps:
       registry: 10.24.2.14
       # 在web界面中设置的密钥        
       username:
-        from_secret: harbor_username    
+        from_secret: admin    
       password:
-        from_secret: harbor_password
+        from_secret: Harbor12345
       # 镜像tag定义
       tags:
         - ${DRONE_BRANCH}-${DRONE_COMMIT}-${DRONE_BUILD_NUMBER}
@@ -67,10 +67,10 @@ steps:
       server: https://10.24.2.14:6443
       # Kubernetes服务帐户令牌 'kubectl get secret -nkube-system|grep token'
       token:
-        from_secret: k8s_token
+        from_secret: eyJhbGciOiJSUzI1NiIsImtpZCI6Inc2V091LV9KelJNbjlGejNQT3IwLXVGdUR0dUpXV2xjbnhrc3plQmdlejAifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJuYW1lc3BhY2UtY29udHJvbGxlci10b2tlbi12cjdyayIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJuYW1lc3BhY2UtY29udHJvbGxlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjNhODdmZDE1LTNmOWMtNGY5ZS1hNDkzLTQyNjAwY2FiMWYxNCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTpuYW1lc3BhY2UtY29udHJvbGxlciJ9.mEjeSvKiCp_VDDo2ApYHPA-k9Pgz36bcAxLYaFy6b8SS6uCgDfalENVgfF149espXNyUcr42gQl4KJ2IVib68D6z5YIa-YgcwI85XM1wcMaKLBk1E5eIBgrnEccPGtcC74AG1qRdoXuvYemdsBQg02vARcR7vFjRiGM7uM82ncWmysCUQk2zQvcjG7Nw4n76fF8-YIkX19qpNiZPrPsG3ZkxU52CcxLZ3asLbxTgszuaSng0UFPZkB47sUEFcFfpYy344At2QM-ZZ4uz6PxUy-ug7ZB9bT1nFixDmcHZpZFN3HA0R37RK93uktECEGSb6ZSJ1innYetmo9FBFM37EQ
       # K8s CA证书的Base-64编码的字符串
       ca:
-        from_secret: k8s_ca    
+        from_secret: MIIC/jCCAeagAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJlcm5ldGVzMB4XDTIyMDEyNjAxMTEyM1oXDTMyMDEyNDAxMTEyM1owFTETMBEGA1UEAxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALzj7h9tBUNoWy3w0k2jex688dVIBd0Mhz6FVY0gkFXllQuM+1UeADFTS8pBNSyiTAbEsYsI/LUrvDj/KkfgdkB7cQOfMhG0xexpKwMW7BtvjdKBJ9ZANFVq7DN8/X+JuJwN9qRTKCCHmqFnDbJn6NZzzJHAsBn1guhizT8SHkXQs8pKJPde0WeE6RAMJ185UwBTT41uS7OYYHtQyQP7HUOpTamzXeekBmh30eeM7HvnFWumUQNrOBCyUvFtT5L1ekvhmJlrj6t1ik4vQvL8Hw0FQ7w2+D8+6XY9l006dyVbop5yxUv0lJ60Fvw3C5atLrLo6FlvbQ/ZOo2qcn2NMVkCAwEAAaNZMFcwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFDEcdIDTtdJF6GNwwdA6Fh5dAE0IMBUGA1UdEQQOMAyCCmt1YmVybmV0ZXMwDQYJKoZIhvcNAQELBQADggEBACsvzR2PNKEDV7kBEIEATluPvwMP7LpG2eCt2VMM0Agy2nTrzP6D2knLpqmPL5bUxP3E6JAEccefYREWgb9tHyfEHR4fO5Ana24A+guV/cgj8SJ/TdiicFH5kZCyDMgTM5hqyc3bmy80LPNQIm0e9+CwGDP7WCFk+r/bAKU8pvJcgjr0oR0RHr/XFgkn5Rw2dnTpJ2sqpD9EXlMJczM+D2e0oLuR1zyDJ/ch85eO5bSRL+9jZwQmdHwmdzEUNeEgzVHlKq162FY6Pyac7CfkgRQRZXqrInItfWJ8eywpgGDiE2lfY86NjzOhR8APlWDG1wUbjJleeQU+ucdV2w/1Clo=    
 
 
 
