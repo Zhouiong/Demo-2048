@@ -39,9 +39,9 @@ steps:
     image: plugins/docker     # docker插件
     settings:
       # 镜像仓库组名称
-      repo: 10.24.2.3/demo/demo-2048
+      repo: 10.24.2.36/demo/demo-2048
       # 镜像仓库名称
-      registry: 10.24.2.3
+      registry: 10.24.2.36
       # 在web界面中设置的密钥        
       username:
         from_secret: harbor_username    
