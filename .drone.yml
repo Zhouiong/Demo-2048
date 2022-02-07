@@ -12,7 +12,7 @@ metadata:
 
 # node选择
 node_selector:
-  kubernetes.io/hostname: slave-14
+  kubernetes.io/hostname: k8s-master-node1
 
 # 挂载本地目录
 volumes:
@@ -39,14 +39,14 @@ steps:
     image: plugins/docker     # docker插件
     settings:
       # 镜像仓库组名称
-      repo: 10.24.2.14/demo/demo-2048
+      repo: 10.24.2.3/demo/demo-2048
       # 镜像仓库名称
-      registry: 10.24.2.14
+      registry: 10.24.2.3
       # 在web界面中设置的密钥        
       username:
-        from_secret: admin    
+        from_secret: harbor_username    
       password:
-        from_secret: Harbor12345
+        from_secret: harbor_password
       # 镜像tag定义
       tags:
         - ${DRONE_BRANCH}-${DRONE_COMMIT}-${DRONE_BUILD_NUMBER}
