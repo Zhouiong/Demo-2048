@@ -43,7 +43,7 @@ kind: Service
 apiVersion: v1
 metadata: 
   name: demo8889
-  namespace: ${APP_NS}
+  namespace: demo
 spec:
   ports:
   - name: demo8889
