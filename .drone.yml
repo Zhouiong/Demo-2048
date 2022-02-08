@@ -58,7 +58,7 @@ steps:
       dockerfile: ./Dockerfiles/Dockerfile
 
 # 第三阶段: 服务滚动更新
-  - name: k8s-deploy
+  - name: k8s-service
     # Kubernetes插件
     image: danielgormly/drone-plugin-kube:0.2.0
     settings:
