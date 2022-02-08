@@ -58,6 +58,22 @@ steps:
       # 构建镜像的dockerfile文件
       dockerfile: ./Dockerfiles/Dockerfile
 
+# 第三阶段: 服务滚动更新
+  - name: k8s-deploy
+    # Kubernetes插件
+    image: danielgormly/drone-plugin-kube:0.2.0
+    settings:
+      build_tag: ${DRONE_BRANCH}-${DRONE_COMMIT}-${DRONE_BUILD_NUMBER}
+      # yaml模板
+      template: template/demo-2048.yaml
+      # apiserver地址    
+      server: https://10.24.2.36:6443
+      # Kubernetes服务帐户令牌 'kubectl get secret -nkube-system|grep token'
+      token:
+        from_secret: k8s_token
+      # K8s CA证书的Base-64编码的字符串
+      ca:
+        from_secret: k8s_ca
 
 
 
