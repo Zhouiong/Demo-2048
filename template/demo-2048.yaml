@@ -37,18 +37,4 @@ spec:
       restartPolicy: Always
       imagePullSecrets:
         - name: harbor
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: demo8889
-  namespace: demo
-spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    targetPort: 8080
-    nodePort: 8889
-    name: demo8889
-  selector:
-    app: demo-2048
+
