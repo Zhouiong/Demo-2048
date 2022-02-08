@@ -1,28 +1,30 @@
-kind: Deployment
 apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: ${APP_NAME}
-  namespace: ${APP_NS}
+  name: demo-2048
+  namespace: demo
   labels:
-    app: ${APP_NAME}
-    name: ${APP_NAME}
+    app: demo-2048
+    name: demo-2048
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${APP_NAME}
-      name: ${APP_NAME}
+      app: demo-2048
+      name: demo-2048
   template:
     metadata:
       labels:
-        app: ${APP_NAME}
-        name: ${APP_NAME}
+        app: demo-2048
+        name: demo-2048
     spec:
       containers:
-        - name: ${APP_NAME}
-          image: ${IMAGE}
+        - name: demo-2048
+          image: >-
+            10.24.2.36/demo/demo-2048:{{build_tag}}
           ports:
             - containerPort: 8080
+              name: demo8889
               protocol: TCP
           resources:
             limits:
@@ -35,17 +37,18 @@ spec:
       restartPolicy: Always
       imagePullSecrets:
         - name: harbor
+
 ---
 kind: Service
 apiVersion: v1
 metadata: 
-  name: ${APP_NAME}
+  name: demo8889
   namespace: ${APP_NS}
 spec:
   ports:
-  - name: web
+  - name: demo8889
     port: 8080
     targetPort: 8080
+    nodePort: 8889
   selector:
-    app: ${APP_NAME}
-    name: ${APP_NAME}
+    app: demo-2048
