@@ -1,3 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitlab
+  namespace: demo
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 8889
+    name: demo8889
+  selector:
+    app: demo-2048
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,7 +39,7 @@ spec:
             10.24.2.36/demo/demo-2048:{{build_tag}}
           ports:
             - containerPort: 8080
-              nodePort: 8889
+              name: demo8889
               protocol: TCP
           resources:
             limits:
