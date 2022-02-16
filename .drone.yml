@@ -12,7 +12,7 @@ metadata:
 
 # node选择
 node_selector:
-  kubernetes.io/hostname: k8s-master-node1
+  kubernetes.io/hostname: master
 
   
 
@@ -41,9 +41,9 @@ steps:
     image: plugins/docker     # docker插件
     settings:
       # 镜像仓库组名称
-      repo: 10.24.2.36/demo/demo-2048
+      repo: 10.24.195.16/demo/demo-2048
       # 镜像仓库名称
-      registry: 10.24.2.36
+      registry: 10.24.195.16
       # 在web界面中设置的密钥        
       username:
         from_secret: harbor_username    
@@ -66,7 +66,7 @@ steps:
       # yaml模板
       template: template/demo-2048.yaml
       # apiserver地址    
-      server: https://10.24.2.36:6443
+      server: https://10.24.195.16:6443
       # Kubernetes服务帐户令牌 'kubectl get secret -nkube-system|grep token'
       token:
         from_secret: k8s_token
@@ -82,7 +82,7 @@ steps:
       # yaml模板
       template: template/service.yaml
       # apiserver地址    
-      server: https://10.24.2.36:6443
+      server: https://10.24.195.16:6443
       # Kubernetes服务帐户令牌 'kubectl get secret -nkube-system|grep token'
       token:
         from_secret: k8s_token
