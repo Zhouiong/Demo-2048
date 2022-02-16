@@ -2,6 +2,7 @@ kind: pipeline
 type: kubernetes
 name: demo-2048
 
+
 # 跳过验证证书，根据实际情况要或不要，github不需要
 clone:
   skip_verify: true
