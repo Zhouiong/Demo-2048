@@ -32,9 +32,9 @@ steps:
     - cd target && jar -xf 2048.war
     - ls -l
     # 在容器里挂载目录
-    volumes:
-      - name: cache
-        path: /root/.m2
+#    volumes:
+#      - name: cache
+#        path: /root/.m2
 
 # 第二阶段: 构建镜像&推送镜像
   - name: build image & push
