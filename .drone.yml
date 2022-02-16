@@ -14,7 +14,6 @@ metadata:
 node_selector:
   kubernetes.io/hostname: master
 
-  
 
 # 挂载本地目录
 volumes:
