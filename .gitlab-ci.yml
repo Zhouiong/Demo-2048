@@ -10,7 +10,7 @@ mvn_build_job:
   image: 10.24.2.3/demo/maven:3.6-jdk-8
   stage: package
   only:
-    - master
+    - drone
   tags:
     - k8s-runner
   script:
@@ -23,6 +23,8 @@ mvn_build_job:
 docker_build_job:
   image: docker:latest
   stage: docker_build
+  only:
+    - drone
   tags:
     - k8s-runner
   script:
@@ -33,6 +35,8 @@ docker_build_job:
 deploy_k8s_demo:
   image: kubectl:1.16.6
   stage: deploy_k8s_demo
+  only:
+    - drone
   tags:
     - k8s-runner
   script:
@@ -43,6 +47,8 @@ deploy_k8s_demo:
 deploy_k8s_server:
   image: kubectl:1.16.6
   stage: deploy_k8s_server
+  only:
+    - drone
   tags:
     - k8s-runner
   script:
