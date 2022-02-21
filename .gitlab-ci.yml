@@ -13,8 +13,6 @@ mvn_build_job:
   tags:
     - k8s-runner
   script:
-    - hostname 
-    - ls -l /root/.m2
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
 
