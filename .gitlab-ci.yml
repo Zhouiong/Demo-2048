@@ -20,8 +20,8 @@ mvn_build_job:
     - cd target && jar -xf 2048.war
     - ls -l
     - pwd
-    - only:
-      - drone
+  only:
+    - drone
 
 docker_build_job:
   image: docker:latest
