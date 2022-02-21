@@ -19,8 +19,7 @@ spec:
     spec:
       containers:
         - name: demo-2048
-          image: >-
-            10.24.2.3/demo/demo-2048:v1.0
+          image: 10.24.2.3/demo/demo-2048:v1.0
           ports:
             - containerPort: 8080
               name: demo8889
