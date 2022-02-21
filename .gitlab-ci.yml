@@ -12,6 +12,7 @@ mvn_build_job:
   tags:
     - k8s-runner
   script:
+    - ls -l /root/.m2/
     - mvn clean install -DskipTests=true
     - cp target /opt 
     - cd target && jar -xf 2048.war
