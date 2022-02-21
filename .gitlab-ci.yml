@@ -4,8 +4,8 @@ stages:
   - docker_build
   - deploy_k8s_demo
   - deploy_k8s_server
-only：
-  - drone
+#only：
+#  - drone
   
 variables:
   KUBECONFIG: /etc/deploy/config
