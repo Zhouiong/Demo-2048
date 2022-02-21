@@ -26,15 +26,6 @@ spec:
             - containerPort: 8080
               name: demo8889
               protocol: TCP
-          resources:
-            limits:
-              cpu: 128m
-              memory: 256Mi
-            requests:
-              cpu: 128m
-              memory: 128Mi
-          imagePullPolicy: IfNotPresent
-      restartPolicy: Always
-      imagePullSecrets:
-        - name: harbor
+
+
 
