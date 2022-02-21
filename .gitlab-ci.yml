@@ -4,7 +4,9 @@ stages:
   - deploy_k8s_demo
   - deploy_k8s_server
 
-
+variables:
+  KUBECONFIG: /etc/deploy/config
+  MAVEN_OPTS: "-Dmaven.repo.local=/opt/cache/.m2/repository"
 mvn_build_job:
   image: 10.24.2.3/demo/maven:3.6-jdk-8
   stage: package
@@ -13,8 +15,6 @@ mvn_build_job:
   tags:
     - k8s-runner
   script:
-    - mvn --version
-    - sleep 60
     - mvn clean install -DskipTests=true
     - cp target /opt 
     - cd target && jar -xf 2048.war
