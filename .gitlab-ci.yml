@@ -10,7 +10,7 @@ mvn_build_job:
   image: 10.24.2.3/demo/maven:3.6-jdk-8
   stage: package
   only:
-    - drone
+    - master
   tags:
     - k8s-runner
   script:
