@@ -17,7 +17,7 @@ mvn_build_job:
   script:
     - ls /opt/cache/.m2/repository
     - mvn clean install -DskipTests=true
-    - cp target /opt 
+    - ls -l 
     - cd target && jar -xf 2048.war
 
 
