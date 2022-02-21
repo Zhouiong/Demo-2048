@@ -14,6 +14,7 @@ mvn_build_job:
   tags:
     - k8s-runner
   script:
+    - find / -name maven-2.0.9.pom
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
 
@@ -27,7 +28,8 @@ docker_build_job:
     - k8s-runner
   script:
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
-    - docker build -t 10.24.2.3/demo/demo-2048:v1.0 -f ./Dockerfiles/Dockerfile
+    - mv Dockerfiles/Dockerfile .
+    - docker build -t 10.24.2.3/demo/demo-2048:v1.0 .
     - docker push 10.24.2.3/demo/demo-2048:v1.0
 
 deploy_k8s_demo:
