@@ -29,8 +29,8 @@ docker_build_job:
     - k8s-runner
   script:
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
-    - docker build -t 10.24.2.3/demo/demo-2048:$CI_PIPELINE_ID -f ./Dockerfiles/Dockerfile
-    - docker push 10.24.2.3/demo/demo-2048:$CI_PIPELINE_ID
+    - docker build -t 10.24.2.3/demo/demo-2048:v1.0 -f ./Dockerfiles/Dockerfile
+    - docker push 10.24.2.3/demo/demo-2048:v1.0
 
 deploy_k8s_demo:
   image: kubectl:1.16.6
