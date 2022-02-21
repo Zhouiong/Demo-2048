@@ -2,7 +2,10 @@ image: docker:stable
 stages:
   - package
   - docker_build
-  - deploy_k8s
+  - deploy_k8s_demo
+  - deploy_k8s_server
+only：
+  - drone
   
 variables:
   KUBECONFIG: /etc/deploy/config
@@ -29,9 +32,9 @@ docker_build_job:
     - docker build -t 10.24.2.3/demo/gitlabci-java-demo:$CI_PIPELINE_ID .
     - docker push 10.24.2.3/demo/gitlabci-java-demo:$CI_PIPELINE_ID
 
-deploy_k8s_job:
+deploy_k8s_demo:
   image: kubectl:1.16.6
-  stage: deploy_k8s
+  stage: deploy_k8s_demo
   tags:
     - k8s-runner
   script:
@@ -39,9 +42,9 @@ deploy_k8s_job:
     - echo $kube_config |base64 -d > $KUBECONFIG
     - kubectl apply -f template/demo-2048.yaml
 
-deploy_k8s_job:
+deploy_k8s_server:
   image: kubectl:1.16.6
-  stage: deploy_k8s
+  stage: deploy_k8s_server
   tags:
     - k8s-runner
   script:
@@ -49,7 +52,4 @@ deploy_k8s_job:
     - echo $kube_config |base64 -d > $KUBECONFIG
     - kubectl apply -f template/service.yaml
 
-# 通过分支限制pipeline执行
-trigger:
-  branch:
-  - drone
+
