@@ -1,0 +1,56 @@
+image: docker:stable
+stages:
+  - package
+  - docker_build
+  - deploy_k8s
+  
+  
+variables:
+  KUBECONFIG: /etc/deploy/config
+#  MAVEN_OPTS: "-Dmaven.repo.local=/opt/cache/.m2/repository"
+
+mvn_build_job:
+  image: maven:3.6-jdk-8
+  stage: package
+  tags:
+    - k8s-runner
+  script:
+    - mvn clean install -DskipTests=true
+    - cd target && jar -xf 2048.war
+    - ls -l
+
+docker_build_job:
+  image: docker:latest
+  stage: docker_build
+  tags:
+    - k8s-runner
+  script:
+    - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
+    - cd Dockerfiles
+    - docker build -t 10.24.2.3/demo/gitlabci-java-demo:$CI_PIPELINE_ID .
+    - docker push 10.24.2.3/demo/gitlabci-java-demo:$CI_PIPELINE_ID
+
+deploy_k8s_job:
+  image: kubectl:1.16.6
+  stage: deploy_k8s
+  tags:
+    - k8s-runner
+  script:
+    - mkdir -p /etc/deploy
+    - echo $kube_config |base64 -d > $KUBECONFIG
+    - kubectl apply -f template/demo-2048.yaml
+
+deploy_k8s_job:
+  image: kubectl:1.16.6
+  stage: deploy_k8s
+  tags:
+    - k8s-runner
+  script:
+    - mkdir -p /etc/deploy
+    - echo $kube_config |base64 -d > $KUBECONFIG
+    - kubectl apply -f template/service.yaml
+
+# 通过分支限制pipeline执行
+trigger:
+  branch:
+  - drone
