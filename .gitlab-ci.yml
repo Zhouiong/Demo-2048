@@ -4,7 +4,6 @@ stages:
   - docker_build
   - deploy_k8s
   
-  
 variables:
   KUBECONFIG: /etc/deploy/config
 #  MAVEN_OPTS: "-Dmaven.repo.local=/opt/cache/.m2/repository"
