@@ -3,7 +3,6 @@ stages:
   - docker_build
   - deploy_k8s_demo
   - deploy_k8s_server
-  
 
 mvn_build_job:
   image: 10.24.2.3/demo/maven:3.6-jdk-8
