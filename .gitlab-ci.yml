@@ -12,7 +12,7 @@ variables:
 #  MAVEN_OPTS: "-Dmaven.repo.local=/opt/cache/.m2/repository"
 
 mvn_build_job:
-  image: maven:3.6-jdk-8
+  image: 10.24.2.3/demo/maven:3.6-jdk-8
   stage: package
   tags:
     - k8s-runner
@@ -29,8 +29,8 @@ docker_build_job:
   script:
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
     - cd Dockerfiles
-    - docker build -t 10.24.2.3/demo/gitlabci-java-demo:$CI_PIPELINE_ID .
-    - docker push 10.24.2.3/demo/gitlabci-java-demo:$CI_PIPELINE_ID
+    - docker build -t 10.24.2.3/demo/demo-2048:$CI_PIPELINE_ID .
+    - docker push 10.24.2.3/demo/demo-2048:$CI_PIPELINE_ID
 
 deploy_k8s_demo:
   image: kubectl:1.16.6
