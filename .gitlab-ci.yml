@@ -20,7 +20,7 @@ mvn_build_job:
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
     - cp -rfv 2048 /opt/cache
-    - ls -l /opt/cache
+
 
 
 
@@ -34,7 +34,6 @@ docker_build_job:
   script:
     - cp -rfv /opt/cache/2048 .
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.36
-    - mv Dockerfiles/Dockerfile .
     - docker build -t 10.24.2.36/demo/demo-2048:v1.0 .
     - docker push 10.24.2.36/demo/demo-2048:v1.0
 
