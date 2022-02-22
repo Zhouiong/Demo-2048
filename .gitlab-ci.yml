@@ -33,7 +33,6 @@ docker_build_job:
     - k8s-runner
   script:
     - cp -rfv /opt/cache/2048 .
-    - ls -l
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
     - mv Dockerfiles/Dockerfile .
     - docker build -t 10.24.2.3/demo/demo-2048:v1.0 .
