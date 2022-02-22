@@ -20,7 +20,8 @@ mvn_build_job:
     - ls -l /root/.m2/
     - ls -l /root/.m2/repository
     - mvn clean install -DskipTests=true
-    - cp -rfv target/2048 /opt/cache
+    - cd target && jar -xf 2048.war
+    - cp -rfv 2048 /opt/cache
 
 
 
