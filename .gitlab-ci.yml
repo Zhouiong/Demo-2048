@@ -6,7 +6,7 @@ stages:
 
 variables:
   KUBECONFIG: /etc/deploy/config
-#  MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
+  MAVEN_OPTS: "-Dmaven.repo.local=/opt/cache/.m2/repository"
 mvn_build_job:
   image: maven:3.6-jdk-8
   stage: package
@@ -15,8 +15,8 @@ mvn_build_job:
   tags:
     - k8s-runner
   script:
-    - mkdir -p /root/.m2/repository
-    - cp -r /opt/cache/.m2/repository /root/.m2
+#    - mkdir -p /root/.m2/repository
+#    - cp -r /opt/cache/.m2/repository /root/.m2
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
     - cp -rfv 2048 /opt/cache
@@ -33,10 +33,10 @@ docker_build_job:
     - k8s-runner
   script:
     - cp -rfv /opt/cache/2048 .
-    - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
+    - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.36
     - mv Dockerfiles/Dockerfile .
-    - docker build -t 10.24.2.3/demo/demo-2048:v1.0 .
-    - docker push 10.24.2.3/demo/demo-2048:v1.0
+    - docker build -t 10.24.2.36/demo/demo-2048:v1.0 .
+    - docker push 10.24.2.36/demo/demo-2048:v1.0
 
 deploy_k8s_demo:
   image: kubectl:1.16.6
