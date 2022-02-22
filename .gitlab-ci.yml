@@ -8,17 +8,17 @@ variables:
   KUBECONFIG: /etc/deploy/config
 #  MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
 mvn_build_job:
-  image: maven:3.6.2-jdk-14
+  image: 10.24.2.3/demo/maven:3.6-jdk-8
   stage: package
   only:
     - drone
   tags:
     - k8s-runner
   script:
-#    - mkdir -p /root/.m2/repository
-#    - cp -r /opt/cache/.m2/repository /root/.m2
-#    - ls -l /root/.m2/
-#    - ls -l /root/.m2/repository
+    - mkdir -p /root/.m2/repository
+    - cp -r /opt/cache/.m2/repository /root/.m2
+    - ls -l /root/.m2/
+    - ls -l /root/.m2/repository
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
     - cp -rfv 2048.war /opt/cache
