@@ -27,7 +27,7 @@
     </dependency>
   </dependencies>
   <build>
-    <defaultGoal>compile</defaultGoal>
+    <defaultGoal>install</defaultGoal>
     <finalName>2048</finalName>
     <plugins>
     <plugin>
