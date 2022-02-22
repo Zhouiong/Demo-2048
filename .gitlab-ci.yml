@@ -16,9 +16,7 @@ mvn_build_job:
     - k8s-runner
   script:
     - mvn clean install -DskipTests=true
-    - cd target && jar -xf 2048.war
-    - cd ..
-    - cp -rfv target/ /opt/cache
+    - cp -rfv target/2048 /opt/cache
 
 
 
@@ -30,7 +28,7 @@ docker_build_job:
   tags:
     - k8s-runner
   script:
-    - cp -rfv /opt/cache/target/ .
+    - cp -rfv /opt/cache/2048/ .
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
     - mv Dockerfiles/Dockerfile .
     - ls && pwd && ls target
