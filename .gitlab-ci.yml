@@ -18,7 +18,7 @@ mvn_build_job:
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
     - cd ..
-    - cp -rfv 2048/ /opt/cache
+    - cp -rfv target/ /opt/cache
 
 
 
