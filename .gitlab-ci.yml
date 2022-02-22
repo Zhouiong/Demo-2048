@@ -19,7 +19,7 @@ mvn_build_job:
     - ls /opt/cache/.m2/repository
     - mvn clean install -DskipTests=true
     -  cp -rfv target/ /opt/cache
-#    - cd target && jar -xf 2048.war
+    - cd target && jar -xf 2048.war
 
 
 docker_build_job:
@@ -32,11 +32,9 @@ docker_build_job:
   script:
     - mkdir target
     - cp -rfv /opt/cache/target/2048 target/
-    - cp /opt/cache/target/2048.war target/2048.war
-    - ls && pwd
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
     - mv Dockerfiles/Dockerfile .
-    - pwd
+    - ls && pwd
     - docker build -t 10.24.2.3/demo/demo-2048:v1.0 .
     - docker push 10.24.2.3/demo/demo-2048:v1.0
 
