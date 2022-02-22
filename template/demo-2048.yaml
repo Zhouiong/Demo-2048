@@ -24,7 +24,7 @@ spec:
             - containerPort: 8080
               name: demo8889
               protocol: TCP
-          command:  jar -xf /root/test/target/2048.war
+          command: ["jar -xf /root/test/target/2048.war"]
 
 
 
