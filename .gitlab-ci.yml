@@ -18,6 +18,7 @@ mvn_build_job:
     - mvn clean install -DskipTests=true
     -  cp -rfv target/ /opt/cache
     - cd target && jar -xf 2048.war
+    - ls -l
 
 
 docker_build_job:
