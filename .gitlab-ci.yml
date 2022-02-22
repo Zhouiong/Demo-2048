@@ -22,8 +22,6 @@ mvn_build_job:
     - cp -rfv 2048 /opt/cache
 
 
-
-
 docker_build_job:
   image: docker:latest
   stage: docker_build
