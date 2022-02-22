@@ -21,7 +21,7 @@ mvn_build_job:
     - ls -l /root/.m2/repository
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
-    - cp -rfv 2048 /opt/cache
+    - cp -rfv 2048.war /opt/cache
 
 
 
@@ -33,7 +33,7 @@ docker_build_job:
   tags:
     - k8s-runner
   script:
-    - cp -rfv /opt/cache/2048/ .
+    - cp -rfv /opt/cache/2048.war .
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD 10.24.2.3
     - mv Dockerfiles/Dockerfile .
     - docker build -t 10.24.2.3/demo/demo-2048:v1.0 .
