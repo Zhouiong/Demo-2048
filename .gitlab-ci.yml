@@ -8,7 +8,7 @@ variables:
   KUBECONFIG: /etc/deploy/config
 #  MAVEN_OPTS: "-Dmaven.repo.local=/root/.m2/repository"
 mvn_build_job:
-  image: 10.24.2.3/demo/maven:3.6-jdk-8
+  image: maven:3.6-jdk-8
   stage: package
   only:
     - drone
