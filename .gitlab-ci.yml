@@ -3,6 +3,7 @@ stages:
   - docker_build
   - deploy_k8s_demo
   - deploy_k8s_server
+  
 
 variables:
   KUBECONFIG: /etc/deploy/config
