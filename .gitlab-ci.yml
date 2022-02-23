@@ -16,9 +16,8 @@ mvn_build_job:
   tags:
     - k8s-runner
   script:
-#    - mkdir -p /root/.m2/repository
-#    - cp -r /opt/cache/.m2/repository /root/.m2
     - cp -r /opt/repository /opt/cache/.m2/
+    - ls /opt/repository && ls /opt/cache/.m2/
     - mvn clean install -DskipTests=true
     - cd target && jar -xf 2048.war
     - cp -rfv 2048 /opt/cache
